@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-box {
+            background: #fff;
+            width: 420px;
+            padding: 30px;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-box h2 {
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        label {
+            font-size: 14px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: 1px solid #D32F2F;
+        }
+
+        .password-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .forgot {
+            font-size: 13px;
+            color: #D32F2F;
+            text-decoration: none;
+        }
+
+        .forgot:hover {
+            text-decoration: underline;
+        }
+
+        .btn-login {
+            width: 100%;
+            background-color: #D32F2F;
+            color: #fff;
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-login:hover {
+            background-color: #F44336
+        }
+
+        .divider {
+            text-align: center;
+            margin: 25px 0;
+            color: #999;
+            position: relative;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+            height: 1px;
+            width: 35%;
+            background: #ddd;
+            position: absolute;
+            top: 50%;
+        }
+
+        .divider::before {
+            left: 0;
+        }
+
+        .divider::after {
+            right: 0;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ccc;
+            background: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .social-btn:hover {
+            background: #f2f2f2;
+        }
+
+        .signup-link {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .signup-link a {
+            color: #D32F2F;
+            text-decoration: none;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+        }
+
+        .eye-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-65%);
+            cursor: pointer;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            padding: 5px;
+            background: none;
+        }
+
+        #hide-password {
+            display: none;
+            background-color: transparent;
+        }
+
+        #view-password {
+            display: none;
+            background-color: transparent;
+        }
+
+        .eye-btn:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .eye-btn:focus {
+            background: rgba(0, 0, 0, 0.15);
+        }
+
+        .forget-password {
+            background: #fff;
+            width: 420px;
+            padding: 20px 30px;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .forget-password h2 {
+            color: #333;
+        }
+
+        .forget-btn {
+            width: 100%;
+            background-color: #D32F2F;
+            color: #fff;
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .forget-btn:hover {
+            background-color: #F44336
+        }
+
+        .back-btn {
+            margin-left: 72%;
+            margin-top: 20px;
+            padding: 10px;
+            width: 100px;
+            border: 1px solid #ccc;
+            background: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .back-btn:hover {
+            background: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-box" id="login-box">
+        <h2>Login with Password</h2>
+
+        <label>Email Id</label>
+        <input type="text" id="login-email" placeholder="Please enter your Email Id">
+
+        <div class="password-row">
+            <label>Password*</label>
+            <a href="#" class="forgot" id="forgotBtn">Forgot Password?</a>
+        </div>
+        <div class="input-wrapper">
+            <input type="password" id="login-password" placeholder="Please enter your password">
+            <button class="eye-btn" onclick="togglePassword()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
+                    viewBox="0 0 16 16" id="view-password">
+                    <path
+                        d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
+                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-eye-slash" viewBox="0 0 16 16" id="hide-password">
+                    <path
+                        d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7 7 0 0 0-2.79.588l.77.771A6 6 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755q-.247.248-.517.486z" />
+                    <path
+                        d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829" />
+                    <path
+                        d="M3.35 5.47q-.27.24-.518.487A13 13 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7 7 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12z" />
+                </svg>
+            </button>
+        </div>
+
+        <button class="btn-login" id="logInBtn">LOGIN</button>
+
+        <div class="divider">Or, login with</div>
+
+        <div class="social-buttons">
+            <button class="social-btn" id="FacebookBtn">Facebook</button>
+            <button class="social-btn" id="signInGoogleBtn">Google</button>
+        </div>
+
+        <div class="signup-link">
+            Don't have an account?
+            <a href="signup.html">Signup now</a>
+        </div>
+    </div>
+
+    <div class="forget-password" id="forget-passwordBox" style="display: none;">
+        <h2>Forget Password</h2>
+        <input type="text" placeholder="Enter your Email" id="forgetEmail">
+        <button class="forget-btn" id="sendEmailPasswoedChangBtn">Send Email</button>
+        <p id="email-send-mssg" style="display: none;">Email has been sent please check your email</p>
+        <button class="back-btn" id="backToLogin">Back</button>
+    </div>
+
+
+    <script src="app.js" type="module"></script>
+    <script>
+        var input = document.getElementById("login-password");
+        var viewBtn = document.getElementById("view-password");
+        var hideBtn = document.getElementById("hide-password");
+        var hide = true
+        input.addEventListener("input", function () {
+            if (input.value.length > 0 && hide) {
+                hideBtn.style.display = "block";
+                viewBtn.style.display = "none";
+            }
+            else if (input.value.length > 0 && !hide) {
+                viewBtn.style.display = "block";
+                hideBtn.style.display = "none";
+            } else {
+                viewBtn.style.display = "none";
+                hideBtn.style.display = "none";
+            }
+        });
+        function togglePassword() {
+            event.preventDefault();
+            if (input.type === "password") {
+                input.type = "text";
+                hideBtn.style.display = "none";
+                viewBtn.style.display = "Block";
+                hide = false;
+            } else {
+                input.type = "password";
+                hideBtn.style.display = "Block";
+                viewBtn.style.display = "none";
+                hide = true;
+            }
+            input.focus();
+
+        }
+    </script>
+</body>
+
+</html>
