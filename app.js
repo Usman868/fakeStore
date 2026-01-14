@@ -80,10 +80,17 @@ if (confirmPassword) {
 }
 
 onAuthStateChanged(auth, (user) => {
+    const page = location.pathname;
     if (user) {
         console.log(user)
+        console.log(page.length)
+        if (user && page.length == 1) {
+            location.replace("dashboard.html");
+        }
+
     } else {
         console.log("user not found")
+
     }
 });
 
