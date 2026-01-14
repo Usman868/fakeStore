@@ -255,8 +255,7 @@ if (sendEmailPasswoedChangeBtn) {
 
 let allProducts = [];
 if (container) {
-    let produtsFetch = async () =>{
-    awit fetch("https://dummyjson.com/products")
+    fetch("https://dummyjson.com/products")
         .then(res => res.json())
         .then(res => {
             allProducts = res.products;
@@ -281,8 +280,6 @@ if (container) {
             </div>
         `;
         });
-    }
-        produtsFetch() 
     }
 
     const loadCategories = (products) => {
